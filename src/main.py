@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # Exemplo de lógica para o agendamento de consultas (RF02)
 def agendar_consulta(paciente_id, prof_id, horario):
     if verificar_disponibilidade(prof_id, horario):
