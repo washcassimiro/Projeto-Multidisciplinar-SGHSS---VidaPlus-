@@ -1,0 +1,23 @@
+-- Criação das tabelas baseadas no diagrama da Seção 3.1
+CREATE TABLE Paciente (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255),
+    cpf VARCHAR(14) UNIQUE,
+    data_nasc DATE,
+    historico_id INTEGER -- Chave Estrangeira (FK)
+);
+
+CREATE TABLE Profissional (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255),
+    crm_coren VARCHAR(20) UNIQUE,
+    especialidade VARCHAR(100)
+);
+
+CREATE TABLE Prontuario (
+    id SERIAL PRIMARY KEY,
+    paciente_id INTEGER REFERENCES Paciente(id),
+    descricao TEXT,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    logs_auditoria TEXT -- Requisito de Segurança
+);
